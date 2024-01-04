@@ -36,13 +36,14 @@ public class BookServiceImpl implements BookService{
 		bo.setGenre(book.getGenre());
 		bo.setISBN(book.getISBN());
 		bo.setTitle(book.getTitle());
+		
 		return bo;
 	}
 
 	@Override
 	public Book deleteBook(Integer book_id) {
 		Book book = br.findById(book_id).orElseThrow(()-> new SomethingWentWrong("Invalid book ID"));
-		br.delete(book);
+		br.deleteById(book_id);
 		return book;
 	}
 
